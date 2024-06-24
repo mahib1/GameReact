@@ -1,0 +1,67 @@
+.flex {
+  display: flex;
+}
+
+.head {
+  justify-content: center;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: nowrap;
+  max-height: 100px;
+  min-width: fit-content;
+  background-color: rgba(200,200,200,0.8);
+  align-items: center;
+  -webkit-backdrop-filter: blur(3px);
+  z-index: 0;
+  border-bottom: 1px solid white;
+}
+
+.brand-img {
+  width : 100px;
+}
+
+.opts-list {
+  align-items: center;
+  justify-content: center;
+  margin-inline: 20px;
+}
+
+.navbar-list {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  margin-top: revert;
+  padding-inline: 0;
+}
+
+.nav-form {
+  gap : 20px; 
+  margin-inline: 20px;
+}
+
+.navbar-heading {
+  margin-inline: 20px;
+}
+
+.navbar-dropdown {  
+  overflow: visible;
+  z-index: 10;
+}
+
+.nav-dropdown-menu {
+  overflow: visible;
+}
+
+.nav-dropdown-item {
+  overflow : visible;
+}
