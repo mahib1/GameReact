@@ -7,34 +7,29 @@ import axios from 'axios';
 import { Game, options } from './fetch.ts'
 
 const App : React.FC = () => {
-  const [sortQuery , setSortQuery] = useState<string>("popularity"); 
-  const [tagQuery, setTagQuery] = useState<string>("3d");
+  const [sortQuery , setSortQuery] = useState("popularity"); 
+  const [tagQuery, setTagQuery] = useState("3d");
   const [games, setGames] = useState<Game[]>([]); 
+  const [drpMenuVis, setDrpMenuVis] = useState(0);
 
-  const handleNavBarClick =  () => {
-    const navBtn = document.querySelectorAll('.navbar-item')!; 
-    const drpdwnBtn = document.querySelectorAll(".nav-dropdown-item");
+  const handleNavBarClick = () => {
+    const navBtn = document.querySelectorAll('.navbar-item')!;
+    const drpdwnBtn = document.querySelector(".navbar-dropdown .dropdown");
+    console.log(drpdwnBtn);
     
     navBtn.forEach((Btn) => {
-      Btn.addEventListener('click' ,  () => {
+      Btn.addEventListener('click' , async () => {
         setTagQuery(Btn.id);
-        console.log(Btn.id);
+        await fetchGames(tagQuery, sortQuery);
+        console.log(`tagQuery is ${tagQuery} and sortQuery is ${sortQuery}`);
       })
     })
-
-    if(drpdwnBtn){
-      drpdwnBtn.forEach((drpBtn) => {
-        drpBtn.addEventListener('click' ,  () => {
-          setSortQuery(drpBtn.id);
-          console.log(drpBtn.id);
-        })
-      })
-    }
+  
   };
 
   const fetchGames = async (tag : string , sort : string) => {
     try {
-      const response = await axios.request(options(tag, sort));
+      const response = await axios.request(options(sort, tag));
       setGames(response.data);
       console.log(response.data[0].title);
     } 
@@ -46,7 +41,10 @@ const App : React.FC = () => {
   useEffect(() => {
     fetchGames(tagQuery, sortQuery);
   }, [tagQuery, sortQuery]);
-
+  
+  useEffect(() => {
+    handleNavBarClick();
+  }, []);
 
 
   return (

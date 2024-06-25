@@ -25,10 +25,10 @@ const NavBar = ({clickBtn} : NavBarProps) => {
           <li className="navbar-itemjk">
             <Dropdown className="navbar-dropdown">
               <Dropdown.Toggle variant="transparent" id="dropdown-basic">
-                Dropdown button
+                Categories
               </Dropdown.Toggle>
 
-              <Dropdown.Menu className="nav-dropdown-menu">
+              <Dropdown.Menu className="nav-dropdown-menu" id="dropdown-menu">
                 <Dropdown.Item className="nav-dropdown-item" href="#/action-1" id="shooter">Shooter</Dropdown.Item>
                 <Dropdown.Item className="nav-dropdown-item" href="#/action-2" id="mmorpg">MMORPG</Dropdown.Item>
                 <Dropdown.Item className="nav-dropdown-item" href="#/action-3" id="survival">
