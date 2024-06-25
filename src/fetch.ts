@@ -13,13 +13,13 @@ export interface Game {
 
 }
 
-export const options = (tagQuery? : string , sortQuery? : string) => {
+export const options = (platQuery? : string , sortQuery? : string) => {
   return ({
     method: 'GET',
     url: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
     params: {
-      tag: `${tagQuery ? tagQuery : "mmorpg"}`,
-      platform : `${sortQuery ? sortQuery : "all"}`
+      platform : `${platQuery ? platQuery : "pc"}`,
+      'sort-by' : `${sortQuery ? sortQuery : "popularity"}`
     },
     headers: {
       'x-rapidapi-key': '28466ec499msh54be0d349a93043p1b76eejsnba1a3ca8b9bc',

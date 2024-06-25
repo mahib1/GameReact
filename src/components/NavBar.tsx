@@ -2,11 +2,11 @@ import GamesIO from "../assets/images/GamesIO.svg";
 import { Dropdown, Navbar } from "react-bootstrap";
 
 interface NavBarProps {
-  onTagClick: (tag: string) => void;
+  onPlatClick: (tag: string) => void;
   onSortClick: (sort: string) => void;
 }
 
-const NavBar: React.FC<NavBarProps> = ({ onTagClick, onSortClick }) => {
+const NavBar: React.FC<NavBarProps> = ({ onPlatClick, onSortClick}) => {
   return (
     <Navbar expand="none" id="navbar" fixed="top" className="navbar flex">
       <div className="navbar-heading">
@@ -27,9 +27,9 @@ const NavBar: React.FC<NavBarProps> = ({ onTagClick, onSortClick }) => {
               </Dropdown.Toggle>
 
               <Dropdown.Menu className="nav-dropdown-menu" id="dropdown-menu">
-                <Dropdown.Item className="nav-dropdown-item" onClick={() => onTagClick("pc")} id="shooter">PC</Dropdown.Item>
-                <Dropdown.Item className="nav-dropdown-item" onClick={() => onTagClick("browser")} id="mmorpg">Browser</Dropdown.Item>
-                <Dropdown.Item className="nav-dropdown-item" onClick={() => onTagClick("all")} id="survival">All</Dropdown.Item>
+                <Dropdown.Item className="nav-dropdown-item" onClick={() => onPlatClick("pc")} id="shooter">PC</Dropdown.Item>
+                <Dropdown.Item className="nav-dropdown-item" onClick={() => onPlatClick("browser")} id="mmorpg">Browser</Dropdown.Item>
+                <Dropdown.Item className="nav-dropdown-item" onClick={() => onPlatClick("all")} id="survival">All</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </li>
@@ -38,9 +38,10 @@ const NavBar: React.FC<NavBarProps> = ({ onTagClick, onSortClick }) => {
 
       <div className="nav-form flex">
         <input
+          id="form-input"
           className="form-control mr-sm-2"
           type="search"
-          placeholder="Search"
+          placeholder="3d, mmorpg, fantasy.."
         />
         <button
           className="btn btn-outline-success my-2 my-sm-0 nav-form-btn"

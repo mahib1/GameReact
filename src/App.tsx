@@ -8,12 +8,12 @@ import { Game, options } from './fetch';
 
 const App: React.FC = () => {
   const [sortQuery, setSortQuery] = useState<string>("popularity");
-  const [tagQuery, setTagQuery] = useState<string>("pc");
+  const [platQuery, setPlatQuery] = useState<string>("all");
   const [games, setGames] = useState<Game[]>([]);
 
-  const fetchGames = async (tag?: string, sort?: string) => {
+  const fetchGames = async (plat?: string, sort?: string) => {
     try {
-      const response = await axios.request(options(sort, tag));
+      const response = await axios.request(options(plat, sort));
       setGames(response.data);
       console.log(response.data[0].title);
     } catch (error) {
@@ -22,22 +22,25 @@ const App: React.FC = () => {
   };
 
   useEffect(() => {
-    fetchGames(tagQuery,sortQuery);
-  }, [tagQuery, sortQuery]);
+    fetchGames(platQuery, sortQuery);
+  }, [platQuery, sortQuery]);
 
-  const handleSortClick = (sort: string) => {
-    console.log(`sort Query is : ${sortQuery}\nand tagQuery is ${tagQuery}`);
+  const handleSortClick = async (sort: string) => {
     setSortQuery(sort);
+    // Ensure fetchGames is called after state update
+    await fetchGames(platQuery, sort);
   };
 
-  const handleTagClick = (tag: string) => {
-    console.log(`sort Query is : ${sortQuery}\nand tagQuery is ${tagQuery}`);
-    setTagQuery(tag);
-  };
+  const handlePlatClick = async (plat: string) => {
+    setPlatQuery(plat);
+    // Ensure fetchGames is called after state update
+    await fetchGames(plat, sortQuery);
+  };  
+
 
   return (
     <>
-      <NavBar onTagClick={handleTagClick} onSortClick={handleSortClick} />
+      <NavBar onPlatClick={handlePlatClick} onSortClick={handleSortClick} />
       <div className="card-container flex">
         {games.map(game => (
           <Card
