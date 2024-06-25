@@ -19,7 +19,7 @@ export const options = (tagQuery? : string , sortQuery? : string) => {
     url: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
     params: {
       tag: `${tagQuery ? tagQuery : "mmorpg"}`,
-      'sort-by' : `${sortQuery ? sortQuery : "popularity"}`
+      platform : `${sortQuery ? sortQuery : "all"}`
     },
     headers: {
       'x-rapidapi-key': '28466ec499msh54be0d349a93043p1b76eejsnba1a3ca8b9bc',
