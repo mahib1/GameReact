@@ -1,7 +1,11 @@
 import GamesIO from "../assets/images/GamesIO.svg";
 import { Dropdown, Navbar } from "react-bootstrap";
 
-const NavBar = () => {
+interface NavBarProps {
+  clickBtn : () => void;
+}
+
+const NavBar = ({clickBtn} : NavBarProps) => {
   const navbar=document.getElementById("navbar");
   if(navbar) navbar.classList.remove("navbar-expand")
 
@@ -15,20 +19,20 @@ const NavBar = () => {
 
       <div className="opts-list flex">
         <ul className="navbar-list" id="navList">
-          <li className="btn navbar-item">Popular</li>
-          <li className="btn navbar-item">Recent</li>
-          <li className="btn navbar-item">Favourites</li>
-          <li className="navbar-item">
+          <li className="btn navbar-item" onClick={clickBtn} id="popularity">Popularity</li>
+          <li className="btn navbar-item" onClick={clickBtn} id="release-date">Recent</li>
+          <li className="btn navbar-item" onClick={clickBtn} id="alphabetical">Alphabetical</li>
+          <li className="navbar-itemjk">
             <Dropdown className="navbar-dropdown">
               <Dropdown.Toggle variant="transparent" id="dropdown-basic">
                 Dropdown button
               </Dropdown.Toggle>
 
               <Dropdown.Menu className="nav-dropdown-menu">
-                <Dropdown.Item className="nav-dropdown-item" href="#/action-1">Action</Dropdown.Item>
-                <Dropdown.Item className="nav-dropdown-item" href="#/action-2">Another action</Dropdown.Item>
-                <Dropdown.Item className="nav-dropdown-item" href="#/action-3">
-                  Something else here
+                <Dropdown.Item className="nav-dropdown-item" href="#/action-1" id="shooter">Shooter</Dropdown.Item>
+                <Dropdown.Item className="nav-dropdown-item" href="#/action-2" id="mmorpg">MMORPG</Dropdown.Item>
+                <Dropdown.Item className="nav-dropdown-item" href="#/action-3" id="survival">
+                  Survival
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
