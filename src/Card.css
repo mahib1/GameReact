@@ -17,6 +17,7 @@
   margin-block: 20px;
   gap: 30px;
   margin-top: 120px;
+  width : clamp(1250px, 100%, 100%);
 }
 
 .card-img-top .card-title .card-text {
