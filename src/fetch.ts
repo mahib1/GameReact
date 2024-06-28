@@ -19,7 +19,7 @@ export const options = (platQuery? : string , sortQuery? : string, tagQuery? : s
     url: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
     params: {
       platform : `${platQuery ? platQuery : "pc"}`,
-      tag : `${tagQuery ? tagQuery : "3d"}`,
+      tag : `${tagQuery ? tagQuery : "mmorpg"}`,
       'sort-by' : `${sortQuery ? sortQuery : "popularity"}`
     },
     headers: {

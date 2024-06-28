@@ -18,7 +18,7 @@ const NavBar: React.FC<NavBarProps> = ({ onPlatClick, onSortClick, onTagClick })
     let value= inputElement.value;
     console.log(value);
     setTag(value);
-    value = '';
+    inputElement.value = '';
     return tag;
   }
 

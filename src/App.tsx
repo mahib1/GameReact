@@ -13,6 +13,7 @@ const App: React.FC = () => {
   const [games, setGames] = useState<Game[]>([]);
 
   const fetchGames = async (plat?: string, sort?: string, tag?: string) => {
+    console.log(`Plat : ${plat} , sort : ${sort} , tag : ${tag}`)
     try {
       const response = await axios.request(options(plat, sort, tag));
       setGames(response.data);
@@ -23,8 +24,8 @@ const App: React.FC = () => {
   };
 
   useEffect(() => {
-    fetchGames(platQuery, sortQuery);
-  }, [platQuery, sortQuery]);
+    fetchGames(platQuery, sortQuery, tagQuery);
+  }, [platQuery, sortQuery, tagQuery]);
 
   const handleSortClick = async (sort: string) => {
     setSortQuery(sort);
