@@ -7,6 +7,7 @@ interface NavBarProps {
 }
 
 const NavBar: React.FC<NavBarProps> = ({ onPlatClick, onSortClick}) => {
+
   return (
     <Navbar expand="none" id="navbar" fixed="top" className="navbar flex">
       <div className="navbar-heading">
