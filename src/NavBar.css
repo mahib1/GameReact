@@ -19,7 +19,7 @@
   min-width: fit-content;
   background-color: rgba(200,200,200,0.8);
   align-items: center;
-  -webkit-backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(4px);
   z-index: 0;
   border-bottom: 1px solid white;
   width: clamp(1100px, 100%, 100%);
