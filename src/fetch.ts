@@ -13,12 +13,13 @@ export interface Game {
 
 }
 
-export const options = (platQuery? : string , sortQuery? : string) => {
+export const options = (platQuery? : string , sortQuery? : string, tagQuery? : string) => {
   return ({
     method: 'GET',
     url: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
     params: {
       platform : `${platQuery ? platQuery : "pc"}`,
+      tag : `${tagQuery ? tagQuery : "3d"}`,
       'sort-by' : `${sortQuery ? sortQuery : "popularity"}`
     },
     headers: {

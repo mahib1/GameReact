@@ -1,12 +1,26 @@
 import GamesIO from "../assets/images/GamesIO.svg";
 import { Dropdown, Navbar } from "react-bootstrap";
+import React, { useState } from "react";
 
 interface NavBarProps {
-  onPlatClick: (tag: string) => void;
+  onPlatClick: (plat: string) => void;
   onSortClick: (sort: string) => void;
+  onTagClick : (tag: string) => void;
 }
 
-const NavBar: React.FC<NavBarProps> = ({ onPlatClick, onSortClick}) => {
+const NavBar: React.FC<NavBarProps> = ({ onPlatClick, onSortClick, onTagClick }) => {
+  const [tag, setTag] = useState("3d"); 
+
+  const getTag = () => {
+    const inputElement = document.
+      getElementById("form-input") as 
+      HTMLInputElement;
+    let value= inputElement.value;
+    console.log(value);
+    setTag(value);
+    value = '';
+    return tag;
+  }
 
   return (
     <Navbar expand="none" id="navbar" fixed="top" className="navbar flex">
@@ -47,6 +61,7 @@ const NavBar: React.FC<NavBarProps> = ({ onPlatClick, onSortClick}) => {
         <button
           className="btn btn-outline-success my-2 my-sm-0 nav-form-btn"
           type="submit"
+          onClick={() => onTagClick(getTag())}
         >
           Search
         </button>

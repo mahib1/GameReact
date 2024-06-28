@@ -9,11 +9,12 @@ import { Game, options } from './fetch';
 const App: React.FC = () => {
   const [sortQuery, setSortQuery] = useState<string>("popularity");
   const [platQuery, setPlatQuery] = useState<string>("all");
+  const [tagQuery, setTagQuery] = useState<string>("3d"); 
   const [games, setGames] = useState<Game[]>([]);
 
-  const fetchGames = async (plat?: string, sort?: string) => {
+  const fetchGames = async (plat?: string, sort?: string, tag?: string) => {
     try {
-      const response = await axios.request(options(plat, sort));
+      const response = await axios.request(options(plat, sort, tag));
       setGames(response.data);
       console.log(response.data[0].title);
     } catch (error) {
@@ -28,19 +29,25 @@ const App: React.FC = () => {
   const handleSortClick = async (sort: string) => {
     setSortQuery(sort);
     // Ensure fetchGames is called after state update
-    await fetchGames(platQuery, sort);
+    await fetchGames(platQuery, sort, tagQuery);
   };
 
   const handlePlatClick = async (plat: string) => {
     setPlatQuery(plat);
     // Ensure fetchGames is called after state update
-    await fetchGames(plat, sortQuery);
+    await fetchGames(plat, sortQuery, tagQuery);
   };  
+
+  const handleTagClick = async (tag : string) => {
+    setTagQuery(tag); 
+    console.log(tag);
+    await fetchGames(platQuery, sortQuery, tag)
+  }
 
 
   return (
     <>
-      <NavBar onPlatClick={handlePlatClick} onSortClick={handleSortClick} />
+      <NavBar onPlatClick={handlePlatClick} onSortClick={handleSortClick} onTagClick={handleTagClick}/>
       <div className="card-container flex">
         {games.map(game => (
           <Card
